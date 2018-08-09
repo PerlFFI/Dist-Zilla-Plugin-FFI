@@ -2,6 +2,7 @@ use Test2::V0 -no_srand => 1;
 sub require_ok ($);
 
 require_ok 'Dist::Zilla::Plugin::FFI';
+require_ok 'Dist::Zilla::Plugin::FFI::Build';
 
 done_testing;
 
