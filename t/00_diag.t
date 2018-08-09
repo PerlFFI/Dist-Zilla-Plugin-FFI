@@ -13,9 +13,11 @@ $modules{$_} = $_ for qw(
   Dist::Zilla::Role::FileMunger
   Dist::Zilla::Role::MetaProvider
   ExtUtils::MakeMaker
+  JSON::PP
   List::Util
   Moose
   Test2::V0
+  Test::DZil
 );
 
 
