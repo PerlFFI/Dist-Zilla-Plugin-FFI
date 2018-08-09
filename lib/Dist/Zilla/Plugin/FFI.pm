@@ -14,6 +14,16 @@ package Dist::Zilla::Plugin::FFI {
 
 This distribution contains some useful plugins for working with FFI::Platypus and friends.
 
+=head1 SEE ALSO
+
+=over 4
+
+=item L<Dist::Zilla::Plugin::FFI>
+
+Install the L<FFI::Build::MM> layer into your C<Makefile.PL>.
+
+=back
+
 =cut
 
 }

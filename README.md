@@ -10,6 +10,12 @@ FFI related Dist::Zilla plugins
 
 This distribution contains some useful plugins for working with FFI::Platypus and friends.
 
+# SEE ALSO
+
+- [Dist::Zilla::Plugin::FFI](https://metacpan.org/pod/Dist::Zilla::Plugin::FFI)
+
+    Install the [FFI::Build::MM](https://metacpan.org/pod/FFI::Build::MM) layer into your `Makefile.PL`.
+
 # AUTHOR
 
 Graham Ollis <plicease@cpan.org>
