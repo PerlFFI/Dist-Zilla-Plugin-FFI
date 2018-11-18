@@ -12,9 +12,13 @@ This distribution contains some useful plugins for working with FFI::Platypus an
 
 # SEE ALSO
 
-- [Dist::Zilla::Plugin::FFI](https://metacpan.org/pod/Dist::Zilla::Plugin::FFI)
+- [Dist::Zilla::Plugin::FFI::Build](https://metacpan.org/pod/Dist::Zilla::Plugin::FFI::Build)
 
     Install the [FFI::Build::MM](https://metacpan.org/pod/FFI::Build::MM) layer into your `Makefile.PL`.
+
+- [Dist::Zilla::Plugin::FFI::CheckLib](https://metacpan.org/pod/Dist::Zilla::Plugin::FFI::CheckLib)
+
+    Add [FFI::CheckLib](https://metacpan.org/pod/FFI::CheckLib) checks into your `Makefile.PL`.
 
 # AUTHOR
 

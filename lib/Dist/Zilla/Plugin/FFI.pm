@@ -18,9 +18,13 @@ This distribution contains some useful plugins for working with FFI::Platypus an
 
 =over 4
 
-=item L<Dist::Zilla::Plugin::FFI>
+=item L<Dist::Zilla::Plugin::FFI::Build>
 
 Install the L<FFI::Build::MM> layer into your C<Makefile.PL>.
+
+=item L<Dist::Zilla::Plugin::FFI::CheckLib>
+
+Add L<FFI::CheckLib> checks into your C<Makefile.PL>.
 
 =back
 
