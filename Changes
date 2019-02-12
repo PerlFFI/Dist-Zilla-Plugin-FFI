@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - [FFI::Build] sets configure_requires properly for 
+    FFI::Build::MM
 
 1.02      2018-11-18 11:37:05 -0500
   - Merged Dist-Zilla-Plugin-FFI-CheckLib into this dist.

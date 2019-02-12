@@ -17,11 +17,13 @@ C<Makefile.PL>.  It does not work with L<Module::Build>.
 
   # TODO: also add build and test prereqs for aliens
   # TODO: release as separate CPAN dist
-  with 'Dist::Zilla::Role::FileMunger';
-  with 'Dist::Zilla::Role::MetaProvider';
+  with 'Dist::Zilla::Role::FileMunger',
+       'Dist::Zilla::Role::MetaProvider',
+       'Dist::Zilla::Role::PrereqSource',
+  ;
 
 my $mm_code_prereqs = <<'EOF1';
-use FFI::Build::MM;
+use FFI::Build::MM 0.83;
 my $fbmm = FFI::Build::MM->new;
 %WriteMakefileArgs = $fbmm->mm_args(%WriteMakefileArgs);
 EOF1
@@ -62,6 +64,16 @@ EOF2
       unless $ok;
     $content .= "\n\n$comment_begin$mm_code_postamble$comment_end\n";
     $file->content($content);
+  }
+
+  sub register_prereqs {
+    my ($self) = @_;
+    $self->zilla->register_prereqs( +{
+        phase => 'configure',
+        type  => 'requires',
+      },
+      'FFI::Build::MM' => '0.83',
+    );
   }
 
   sub metadata
