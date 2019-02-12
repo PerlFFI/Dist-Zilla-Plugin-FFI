@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+1.03      2019-02-12 16:06:51 -0500
   - [FFI::Build] sets configure_requires properly for 
     FFI::Build::MM
 
