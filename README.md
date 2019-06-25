@@ -8,7 +8,7 @@ FFI related Dist::Zilla plugins
 
 # DESCRIPTION
 
-This distribution contains some useful plugins for working with FFI::Platypus and friends.
+This distribution contains some useful plugins for working with [FFI::Platypus](https://metacpan.org/pod/FFI::Platypus) and friends.
 
 # SEE ALSO
 

@@ -12,7 +12,7 @@ package Dist::Zilla::Plugin::FFI {
 
 =head1 DESCRIPTION
 
-This distribution contains some useful plugins for working with FFI::Platypus and friends.
+This distribution contains some useful plugins for working with L<FFI::Platypus> and friends.
 
 =head1 SEE ALSO
 
