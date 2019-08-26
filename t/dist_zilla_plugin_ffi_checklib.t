@@ -41,7 +41,7 @@ foreach my $test (@tests)
             unless eval { require Dist::Zilla::Plugin::ModuleBuildTiny; Dist::Zilla::Plugin::ModuleBuildTiny->VERSION(0.007) };
     }
 
-    
+
     my $tzil = Builder->from_config(
         { dist_root => 't/does-not-exist' },
         {
@@ -79,7 +79,7 @@ foreach my $test (@tests)
     my $build_dir = path($tzil->tempdir)->child('build');
     my $file = $build_dir->child($test->{script_PL});
     ok(-e $file, "@{[ $test->{script_PL} ]} created");
-    
+
     my $content = $file->slurp_utf8;
     unlike($content, qr/[^\S\n]\n/m, 'no trailing whitespace in generated file');
 
