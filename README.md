@@ -5,6 +5,7 @@ FFI related Dist::Zilla plugins
 # SYNOPSIS
 
     [FFI::Build]
+    [FFI::CheckLib]
 
 # DESCRIPTION
 

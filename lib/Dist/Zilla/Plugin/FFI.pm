@@ -9,6 +9,7 @@ package Dist::Zilla::Plugin::FFI {
 =head1 SYNOPSIS
 
  [FFI::Build]
+ [FFI::CheckLib]
 
 =head1 DESCRIPTION
 
