@@ -1,11 +1,13 @@
-# Dist::Zilla::Plugin::FFI [![Build Status](https://secure.travis-ci.org/Perl5-FFI/Dist-Zilla-Plugin-FFI.png)](http://travis-ci.org/Perl5-FFI/Dist-Zilla-Plugin-FFI)
+# Dist::Zilla::Plugin::FFI [![Build Status](https://travis-ci.org/PerlFFI/Dist-Zilla-Plugin-FFI.svg)](http://travis-ci.org/PerlFFI/Dist-Zilla-Plugin-FFI)
 
 FFI related Dist::Zilla plugins
 
 # SYNOPSIS
 
-    [FFI::Build]
-    [FFI::CheckLib]
+```
+[FFI::Build]
+[FFI::CheckLib]
+```
 
 # DESCRIPTION
 
