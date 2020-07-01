@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Move to PerlFFI GitHub org.
 
 1.04      2019-08-13 13:58:33 -0400
   - [FFI::Build] will prune ffi/_build files which you
