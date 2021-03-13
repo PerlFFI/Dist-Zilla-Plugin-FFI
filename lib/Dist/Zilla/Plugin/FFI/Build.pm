@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::FFI::Build {
 
-  use 5.014;
+  use 5.024;
   use Moose;
   use List::Util qw( first );
 
