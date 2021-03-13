@@ -121,7 +121,7 @@ EOF2
       $self->zilla->prune_file($file);
     }
   }
-  
+
   __PACKAGE__->meta->make_immutable;
 }
 
