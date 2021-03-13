@@ -117,7 +117,7 @@ package Dist::Zilla::Plugin::FFI::CheckLib {
         ] : ()
     } grep !/^verify$/, @list_options, ( $self->recursive ? 'recursive' : () );
 
-    my @verify = map { s/^\|//; $_ } $self->verify;
+    my @verify = map { s/^\|//r } $self->verify;
 
     $file->content(
         substr($orig_content, 0, $pos)

@@ -1,4 +1,4 @@
-# Dist::Zilla::Plugin::FFI [![Build Status](https://travis-ci.org/PerlFFI/Dist-Zilla-Plugin-FFI.svg)](http://travis-ci.org/PerlFFI/Dist-Zilla-Plugin-FFI)
+# Dist::Zilla::Plugin::FFI ![linux](https://github.com/PerlFFI/Dist-Zilla-Plugin-FFI/workflows/linux/badge.svg)
 
 FFI related Dist::Zilla plugins
 
