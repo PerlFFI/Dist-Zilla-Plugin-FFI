@@ -4,6 +4,8 @@ package Dist::Zilla::Plugin::FFI::Build {
   use Moose;
   use List::Util qw( first );
 
+  # ABSTRACT: Add FFI::Build to your Makefile.PL
+
 =head1 SYNOPSIS
 
  [FFI::Build]
