@@ -25,7 +25,11 @@ This distribution contains some useful plugins for working with [FFI::Platypus](
 
 # AUTHOR
 
-Graham Ollis <plicease@cpan.org>
+Author: Graham Ollis <plicease@cpan.org>
+
+Contributors:
+
+Zaki Mughal (zmughal)
 
 # COPYRIGHT AND LICENSE
 
