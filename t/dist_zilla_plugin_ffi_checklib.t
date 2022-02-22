@@ -18,11 +18,13 @@ use warnings;
 # inserted by Dist::Zilla::Plugin::FFI::CheckLib @{[ Dist::Zilla::Plugin::FFI::CheckLib->VERSION || '<self>' ]}
 use FFI::CheckLib;
 check_lib_or_exit(
+  alien => [ 'Alien::iconv', 'Alien::jpeg' ],
   lib => [ 'iconv', 'jpeg' ],
   libpath => 'additional_path',
   symbol => [ 'foo', 'bar' ],
   systempath => 'system',
   recursive => '1',
+  try_linker_script => '1',
   verify => sub {
     my(\$name, \$libpath) = \@_;
     1;
@@ -55,7 +57,9 @@ foreach my $test (@tests)
                             libpath => 'additional_path',
                             symbol => [ qw(foo bar) ],
                             systempath => 'system',
+                            alien => [ qw(Alien::iconv Alien::jpeg) ],
                             recursive => 1,
+                            try_linker_script => 1,
                             verify => [
                               '|my($name, $libpath) = @_;',
                               '|1;',
@@ -91,7 +95,7 @@ foreach my $test (@tests)
 
     is(
         $tzil->distmeta->{prereqs}->{configure}->{requires}->{'FFI::CheckLib'},
-        '0.11',
+        '0.28',
     );
 
     #diag 'got log messages: ', explain $tzil->log_messages
