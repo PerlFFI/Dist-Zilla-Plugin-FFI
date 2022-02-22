@@ -16,6 +16,7 @@ package Dist::Zilla::Plugin::FFI::CheckLib {
   use namespace::autoclean;
 
   my @list_options = qw/
+    alien
     lib
     libpath
     symbol
@@ -32,7 +33,7 @@ package Dist::Zilla::Plugin::FFI::CheckLib {
     handles => { $_ => 'elements' },
   ) for @list_options;
 
-  has recursive => (
+  has [ qw/recursive try_linker_script/ ] => (
     is      => 'rw',
     lazy    => 1,
     default => sub { 0 },
@@ -45,6 +46,7 @@ package Dist::Zilla::Plugin::FFI::CheckLib {
     $config->{+__PACKAGE__} = +{
       (map {; $_ => [ $self->$_ ] } @list_options),
       recursive => $self->recursive,
+      try_linker_script => $self->try_linker_script,
     };
 
     $config
@@ -56,7 +58,7 @@ package Dist::Zilla::Plugin::FFI::CheckLib {
         phase => 'configure',
         type  => 'requires',
       },
-      'FFI::CheckLib' => '0.11',
+      'FFI::CheckLib' => '0.28',
     );
   }
 
@@ -115,7 +117,9 @@ package Dist::Zilla::Plugin::FFI::CheckLib {
         [
           $_ => @stuff > 1 ? ('[ ' . join(', ', @stuff) . ' ]') : $stuff[0]
         ] : ()
-    } grep !/^verify$/, @list_options, ( $self->recursive ? 'recursive' : () );
+    } grep !/^verify$/, @list_options,
+        ( $self->recursive ? 'recursive' : () ),
+        ( $self->try_linker_script ? 'try_linker_script' : () );
 
     my @verify = map { s/^\|//r } $self->verify;
 
@@ -181,10 +185,24 @@ paths). Can be used more than once.
 
 Additional path to search for libraries. Can be used more than once.
 
+=head2 C<alien>
+
+The name of an L<Alien> class that provides the L<Alien::Base> interface for
+dynamic libraries.
+
+Can be used more than once.
+
 =head2 C<recursive>
 
 If set to true, directories specified in C<libpath> will be searched
 recursively.
+
+Defaults to false.
+
+=head2 C<try_linker_script>
+
+If set to true, uses the linker command to attempt to resolve C<.so> files for
+platforms where C<.so> files are linker scripts.
 
 Defaults to false.
 
