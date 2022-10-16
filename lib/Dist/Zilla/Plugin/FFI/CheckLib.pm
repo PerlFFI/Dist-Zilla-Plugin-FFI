@@ -2,7 +2,7 @@ package Dist::Zilla::Plugin::FFI::CheckLib {
 
   use strict;
   use warnings;
-  use 5.024;
+  use 5.020;
 
   # ABSTRACT: FFI::CheckLib alternative to Dist::Zilla::Plugin::CheckLib
 

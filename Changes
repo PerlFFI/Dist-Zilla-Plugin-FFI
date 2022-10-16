@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Drop required Perl to 5.20
+  - Added lang and build properties to [FFI::Build] plugin (gh#9)
 
 1.05      2022-02-22 09:32:27 -0700
   - Bump required Perl to 5.24
