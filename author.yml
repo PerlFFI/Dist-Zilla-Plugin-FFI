@@ -12,7 +12,8 @@ pod_spelling_system:
     - Mughal
     - Zaki
     - zmughal
-
+    - GoMod
+    - lang
 
 pod_coverage:
   skip: 0

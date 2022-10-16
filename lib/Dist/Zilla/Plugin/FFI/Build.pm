@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::FFI::Build {
 
-  use 5.024;
+  use 5.020;
   use Moose;
   use List::Util qw( first );
 
@@ -40,6 +40,40 @@ an FFI module using the bundle interface.
 
 This plugin adds the appropriate hooks for L<FFI::Build::MM> into your
 C<Makefile.PL>.  It does not work with L<Module::Build>.
+
+=head1 PROPERTIES
+
+=head2 lang
+
+If you are using a L<language plugin|FFI::Platypus::Lang> then you can
+specify it here.  It will add it as a prereq.  This should be the "short"
+name of the plugin, without the C<FFI::Platypus::Lang> prefix.  So for
+example for L<FFI::Platypus::Lang::Rust> you would just set this to
+C<Rust>.
+
+In addition setting these C<lang> to these languages will have the following
+additional affects:
+
+=over 4
+
+=item C<Rust>
+
+The paths C<ffi/target> and C<t/ffi/target> will be pruned when building
+the dist.  This is usually what you want.
+
+=back
+
+=head2 build
+
+If you need a language specific builder this is where you specify it.
+These are classes that live in the C<FFI::Build::File::> namespace.
+For example for Rust you would specify L<Cargo|FFI::Build::File::Cargo>
+and for Go you would specify L<GoMod|FFI::Build::File::GoMod>.
+
+Setting this property will add the appropriate module as a configure
+time prereq.
+
+You do not usually need this for the C programming language.
 
 =cut
 
@@ -81,6 +115,16 @@ EOF2
   my $comment_begin = "# BEGIN code inserted by @{[ __PACKAGE__ ]}\n";
   my $comment_end   = "# END code inserted by @{[ __PACKAGE__ ]}\n";
 
+  has lang => (
+    is  => 'ro',
+    isa => 'Maybe[Str]',
+  );
+
+  has build => (
+    is => 'ro',
+    isa => 'Maybe[Str]',
+  );
+
   sub munge_files
   {
     my($self) = @_;
@@ -103,6 +147,27 @@ EOF2
       },
       'FFI::Build::MM' => '0.83',
     );
+
+    if($self->lang)
+    {
+      $self->zilla->register_prereqs( +{
+          phase => 'runtime',
+          type  => 'requires',
+        },
+        "FFI::Platypus::Lang::@{[ $self->lang ]}",
+      );
+    }
+
+    if($self->build)
+    {
+      $self->zilla->register_prereqs( +{
+          phase => 'configure',
+          type  => 'requires',
+        },
+        "FFI::Build::File::@{[ $self->lang ]}",
+      );
+    }
+
   }
 
   sub metadata
@@ -116,12 +181,24 @@ EOF2
   {
     my($self) = @_;
 
+    my $lang = $self->lang;
+
     foreach my $file (@{ $self->zilla->files })
     {
       next unless $file->name =~ m!^ffi/_build/!;
-      $self->log_debug([ 'pruning %s', $file->name ]);
-      $self->zilla->prune_file($file);
+      my $name = $file->name;
+      if($name =~ m!^ffi/_build/!)
+      {
+        $self->log_debug([ 'pruning %s', $name ]);
+        $self->zilla->prune_file($file);
+      }
+      elsif(defined $lang && $lang eq 'Rust' && $name =~ m!^(t/|)ffi/target/!)
+      {
+        $self->log_debug([ 'pruning %s', $name ]);
+        $self->zilla->prune_file($file);
+      }
     }
+
   }
 
   __PACKAGE__->meta->make_immutable;
