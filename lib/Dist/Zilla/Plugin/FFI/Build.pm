@@ -164,7 +164,7 @@ EOF2
           phase => 'configure',
           type  => 'requires',
         },
-        "FFI::Build::File::@{[ $self->lang ]}",
+        "FFI::Build::File::@{[ $self->build ]}",
       );
     }
 
