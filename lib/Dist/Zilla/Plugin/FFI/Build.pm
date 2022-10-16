@@ -185,14 +185,11 @@ EOF2
 
     foreach my $file (@{ $self->zilla->files })
     {
-      next unless $file->name =~ m!^ffi/_build/!;
       my $name = $file->name;
-      if($name =~ m!^ffi/_build/!)
-      {
-        $self->log_debug([ 'pruning %s', $name ]);
-        $self->zilla->prune_file($file);
-      }
-      elsif(defined $lang && $lang eq 'Rust' && $name =~ m!^(t/|)ffi/target/!)
+      my $prune = 0;
+      $prune = 1 if $name =~ m!^ffi/_build/!;
+      $prune = 1 if defined $lang && $lang eq 'Rust' && $name =~ m!^(t/|)ffi/target/!;
+      if($prune)
       {
         $self->log_debug([ 'pruning %s', $name ]);
         $self->zilla->prune_file($file);
