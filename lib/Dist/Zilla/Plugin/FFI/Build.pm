@@ -154,7 +154,7 @@ EOF2
           phase => 'runtime',
           type  => 'requires',
         },
-        "FFI::Platypus::Lang::@{[ $self->lang ]}",
+        "FFI::Platypus::Lang::@{[ $self->lang ]}" => 0,
       );
     }
 
@@ -164,7 +164,7 @@ EOF2
           phase => 'configure',
           type  => 'requires',
         },
-        "FFI::Build::File::@{[ $self->build ]}",
+        "FFI::Build::File::@{[ $self->build ]}" => 0,,
       );
     }
 
