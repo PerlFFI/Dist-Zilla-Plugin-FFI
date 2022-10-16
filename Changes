@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Removed mostly harmless warning (gh#10)
+  - Fix bug where some files aren't being pruned that should (gh#10)
 
 1.06      2022-10-15 19:53:30 -0600
   - Drop required Perl to 5.20
