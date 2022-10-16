@@ -183,7 +183,7 @@ EOF2
 
     my $lang = $self->lang;
 
-    foreach my $file (@{ $self->zilla->files })
+    foreach my $file ((), @{ $self->zilla->files })
     {
       my $name = $file->name;
       my $prune = 0;
@@ -191,8 +191,12 @@ EOF2
       $prune = 1 if defined $lang && $lang eq 'Rust' && $name =~ m!^(t/|)ffi/target/!;
       if($prune)
       {
-        $self->log_debug([ 'pruning %s', $name ]);
+        $self->log([ 'pruning %s', $name ]);
         $self->zilla->prune_file($file);
+      }
+      else
+      {
+        $self->log_debug([ 'NOT pruning %s', $name ]);
       }
     }
 
