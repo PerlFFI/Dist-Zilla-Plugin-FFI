@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Handle whitespace changes in [ModuleBuildTiny] (gh#12, gh#13)
 
 1.07      2022-10-16 04:37:01 -0600
   - Removed mostly harmless warning (gh#10)

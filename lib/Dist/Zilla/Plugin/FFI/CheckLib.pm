@@ -108,7 +108,7 @@ package Dist::Zilla::Plugin::FFI::CheckLib {
 
     my $orig_content = $file->content;
     $self->log_fatal('could not find position in ' . $file->name . ' to modify!')
-      unless $orig_content =~ m/use strict;\nuse warnings;\n\n/g;
+      unless $orig_content =~ m/use strict;\nuse warnings;\n\n?/g;
     my $pos = pos($orig_content);
 
     my @options = map {;

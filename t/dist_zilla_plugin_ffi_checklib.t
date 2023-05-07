@@ -12,9 +12,6 @@ my @tests = (
 );
 
 my $pattern = <<PATTERN;
-use strict;
-use warnings;
-
 # inserted by Dist::Zilla::Plugin::FFI::CheckLib @{[ Dist::Zilla::Plugin::FFI::CheckLib->VERSION || '<self>' ]}
 use FFI::CheckLib;
 check_lib_or_exit(
