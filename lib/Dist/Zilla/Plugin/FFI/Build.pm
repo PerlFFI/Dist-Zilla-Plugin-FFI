@@ -1,7 +1,10 @@
+use 5.020;
+use true;
+
 package Dist::Zilla::Plugin::FFI::Build {
 
-  use 5.020;
   use Moose;
+  use experimental qw( signatures );
   use List::Util qw( first );
 
   # ABSTRACT: Add FFI::Build to your Makefile.PL
@@ -125,9 +128,8 @@ EOF2
     isa => 'Maybe[Str]',
   );
 
-  sub munge_files
+  sub munge_files ($self)
   {
-    my($self) = @_;
     my $file = first { $_->name eq 'Makefile.PL' } @{ $self->zilla->files };
     $self->log_fatal("unable to find Makefile.PL")
       unless $file;
@@ -139,8 +141,7 @@ EOF2
     $file->content($content);
   }
 
-  sub register_prereqs {
-    my ($self) = @_;
+  sub register_prereqs ($self) {
     $self->zilla->register_prereqs( +{
         phase => 'configure',
         type  => 'requires',
@@ -170,17 +171,14 @@ EOF2
 
   }
 
-  sub metadata
+  sub metadata ($self)
   {
-    my($self) = @_;
     my %meta = ( dynamic_config => 1 );
     \%meta;
   }
 
-  sub prune_files
+  sub prune_files ($self)
   {
-    my($self) = @_;
-
     my $lang = $self->lang;
 
     foreach my $file ((), @{ $self->zilla->files })
@@ -204,5 +202,3 @@ EOF2
 
   __PACKAGE__->meta->make_immutable;
 }
-
-1;
