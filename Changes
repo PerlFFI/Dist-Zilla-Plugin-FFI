@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+1.08      2024-12-18 20:30:19 -0700
   - Add support for FFI::Platypus::Lang::V (gh#15)
 
 1.07      2022-10-16 04:37:01 -0600
