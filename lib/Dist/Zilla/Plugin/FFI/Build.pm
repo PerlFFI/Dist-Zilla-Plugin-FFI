@@ -157,6 +157,14 @@ EOF2
         },
         "FFI::Platypus::Lang::@{[ $self->lang ]}" => 0,
       );
+      if($self->lang eq 'V') {
+         $self->zilla->register_prereqs( +{
+             phase => 'runtime',
+             type  => 'requires',
+           },
+           "FFI::Build" => '2.10',
+         )
+      }
     }
 
     if($self->build)
@@ -167,8 +175,15 @@ EOF2
         },
         "FFI::Build::File::@{[ $self->build ]}" => 0,,
       );
+      if($self->build eq 'VMod') {
+         $self->zilla->register_prereqs( +{
+             phase => 'runtime',
+             type  => 'requires',
+           },
+           "FFI::Build" => '2.10',
+         )
+      }
     }
-
   }
 
   sub metadata ($self)
