@@ -1,8 +1,9 @@
-package Dist::Zilla::Plugin::FFI {
+use strict;
+use warnings;
+use 5.020;
+use true;
 
-  use strict;
-  use warnings;
-  use 5.020;
+package Dist::Zilla::Plugin::FFI {
 
   # ABSTRACT: FFI related Dist::Zilla plugins
 
@@ -32,5 +33,3 @@ Add L<FFI::CheckLib> checks into your C<Makefile.PL>.
 =cut
 
 }
-
-1;
